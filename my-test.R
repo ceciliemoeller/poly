@@ -7,6 +7,8 @@ head <- tags$head(
   includeScript(file.path(jspsych_dir, "jspsych.js")),
   includeScript(file.path(jspsych_dir, "plugins/jspsych-html-keyboard-response.js")),
   includeScript(file.path(jspsych_dir, "plugins/jspsych-html-button-response.js")),
+  includeScript(file.path(jspsych_dir, "plugins/jspsych-audio-keyboard-response.js")),
+  includeScript(file.path(jspsych_dir, "plugins/jspsych-audio-button-response.js")),
 )
 
 ui <- tags$div(

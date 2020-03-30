@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
         <title>My experiment</title>
         <script src="jspsych-6.1.0/jspsych.js"></script>
         <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
         <script src="jspsych-6.1.0/plugins/jspsych-html-button-response.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-audio-keyboard-response.js"></script>
         <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     </head>
     <body></body>
@@ -16,14 +19,34 @@
     choices: ['Healthy', 'Unhealthy'],
     prompt: "<p>Is this activity healthy or unhealthy?</p>"
 };
+    // return [trial];
     var hello_trial = {
         type: 'html-keyboard-response',
         stimulus: 'Hello world!'
-    }
+    };
+    // return [hello_trial];
+    
+    var audio_trial = {
+     type: 'audio-keyboard-response',
+      stimulus: 'www/tone'
+    };
+    // //   stimulus: 'www/ambi_-13-5_mono_short.mp3', 
+    // // stimulus: 'https://media.gold-msi.org/test_materials/MPT/training/in-tune.mp3',
+    // //   choices: ['TAP HERE', 'NEXT']     
+    // };
+    // // // return [audio_trial];
+
+    // // var audio = 'www/ambi_-13-5_mono_short.mp3';
+    // var audio = 'www/tone';
+    // // // var audio = ['https://media.gold-msi.org/test_materials/MPT/training/in-tune.mp3'];
 
     jsPsych.init({
-        timeline: [trial]
+         timeline: [trial, hello_trial, audio_trial],
+        //  timeline: [trial, hello_trial]
+        // preload_audio: audio,
+    // use_webaudio: true
     })
 
     </script>
 </html>
+
