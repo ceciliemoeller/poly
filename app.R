@@ -159,7 +159,6 @@ id <- c(text_input_page(
 
 elts <- list(
   device,
-  id,
   welcome,
   beat,
   elt_save_results_to_disk(complete = FALSE),
