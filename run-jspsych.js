@@ -41,7 +41,7 @@ function run_jspsych() {
     timeline: timeline,
     display_element: 'js_psych',
     preload_audio: audio,
-    use_webaudio: false,
+    use_webaudio: true,
     on_finish: function() {
       var json_data = jsPsych.data.get().json();
       Shiny.onInputChange("jspsych_results", json_data);

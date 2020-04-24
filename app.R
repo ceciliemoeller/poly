@@ -37,6 +37,59 @@ ui <- tags$div(
   includeScript("run-jspsych.js"),
   tags$div(id = "js_psych")
 )
+# ################################## slet herfra 
+# # Configure options
+# config <- test_options(title="Validering af dansk Gold-MSI",
+#                        admin_password="", # write a secret password here
+#                        # enable_admin_panel=FALSE,
+#                        researcher_email="cecilie@clin.au.dk",
+#                        problems_info="Problemer? Kontakt venligst Cecilie Møller på cecilie@clin.au.dk",
+#                        languages = "DA",
+#                        display = display_options(
+#                          full_screen = TRUE,
+#                          content_background_colour = "grey",
+#                          css = c(file.path(library_dir, "css/jspsych.css"),
+#                                  "jspsych/css/RT_DK.css")
+#                        ))
+# 
+# make_test(experiment,opt=config)
+# ###
+# 
+# config <- test_options(title="Validering af dansk Gold-MSI",
+#                        admin_password="", # write a secret password here
+#                        # enable_admin_panel=FALSE,
+#                        researcher_email="cecilie@clin.au.dk",
+#                        problems_info="Problemer? Kontakt venligst Cecilie Møller på cecilie@clin.au.dk",
+#                        languages = "DA",
+#                        display = display_options(
+#                          full_screen = TRUE,
+#                          content_background_colour = "grey",
+#                          css = c(file.path(library_dir, "css/jspsych.css"),
+#                                  "jspsych/css/RT_DK.css")
+#                        ))
+# 
+# make_test(
+#   elts = elts,
+#   opt = demo_options(
+#     display = display_options(
+#       full_screen = TRUE,
+#       css = c(file.path(jspsych_dir, "css/jspsych.css"),"css/style.css")
+#     )))
+# 
+# 
+# bliver til 
+# make_test(
+#   elts = elts,
+#   opt = test_options(title="MIB poly pilot, apr. 27th 2020",
+#                      admin_password="", # write a secret password here
+#                      # enable_admin_panel=FALSE,
+#                      researcher_email="cecilie@clin.au.dk",
+#                      problems_info="Problems? Contact cecilie@clin.au.dk"),
+#                      display = display_options(
+#                       full_screen = TRUE,
+#                       css = c(file.path(jspsych_dir, "css/jspsych.css"),"css/style.css")
+#       ))
+####################### og hertil 
 
 poly_ratio <- page(
   ui = ui,
@@ -116,15 +169,25 @@ elts <- list(
   final_page("Thanks! You're done. Please wait for the rest of the gang to finish.")
 )
 
- make_test(
-  elts = elts,
-  opt = demo_options(
-    display = display_options(
-      full_screen = TRUE,
-      css = c(file.path(jspsych_dir, "css/jspsych.css"),"css/style.css")
-  )))
+ # make_test(
+ #  elts = elts,
+ #  opt = demo_options(
+ #    display = display_options(
+ #      full_screen = TRUE,
+ #      css = c(file.path(jspsych_dir, "css/jspsych.css"),"css/style.css")
+ #  )))
 
- 
+ make_test(
+     elts = elts,
+     opt = test_options(title="MIB poly pilot, apr. 27th 2020",
+                        admin_password="test", # write a secret password here
+                        # enable_admin_panel=FALSE,
+                        researcher_email="cecilie@clin.au.dk",
+                        problems_info="Problems? Contact cecilie@clin.au.dk",
+                        display = display_options(
+                         full_screen = TRUE,
+                         css = c(file.path(jspsych_dir, "css/jspsych.css"),"css/style.css")
+         )))
 
 # shiny::runApp(".")
 # 
