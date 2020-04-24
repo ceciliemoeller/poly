@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.1.0/jspsych.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-html-button-response.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych_BPM/jspsych-audio-bpm-button-response.js"></script>
+    <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body></body>
+<script>
+
+var timeline = [];
+
+var welcome = {
+    type: "html-button-response",
+    stimulus: "Testing BPM plugin. ",
+    choices:["Tap here to proceed."]
+  };
+
+  timeline.push(welcome);
+
+  var three_trial = {
+  type: 'audio-bpm-button-response',
+  stimulus: 'sounds/pitch/3-C3-8__4-C4-8.wav',
+  choices: ['here', 'not here']
+};
+
+var four_trial = {
+  type: 'audio-bpm-button-response',
+  stimulus: 'sounds/pitch/3-C4-8__4-C3-8.wav',
+//   choices: ['there', 'not there']
+  choices: ['there']
+}
+timeline.push(three_trial, four_trial);
+
+
+ jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+    jsPsych.data.displayData();
+  }
+    });
+  </script>
+  </html> 
+
+
+<!-- 
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mousedown demo</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+ 
+<p>Press mouse and release here.</p>
+ 
+<script>
+$( "p" )
+  .mouseup(function() {
+    $( this ).append( "<span style='color:#f00;'>Mouse up.</span>" );
+  })
+  .mousedown(function() {
+    $( this ).append( "<span style='color:#00f;'>Mouse down.</span>" );
+  });
+</script>
+ 
+</body>
+</html> --> -->
