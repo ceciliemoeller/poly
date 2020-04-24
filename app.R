@@ -138,7 +138,7 @@ elts <- list(
   rating,
   id,
   elt_save_results_to_disk(complete = TRUE),
-  final_page("Thanks! You're done. Your data has been saved now and you can safely close the browser window (although you browser will try to convince you otherwise when you do. The presentation will continue when everyone is ready.")
+  final_page("Thanks! You're done. Your data has been saved now and you can safely close the browser window (although you browser will try to convince you otherwise when you do). The presentation will continue when everyone is ready.")
 )
 
  # make_test(
@@ -152,7 +152,7 @@ elts <- list(
  make_test(
      elts = elts,
      opt = test_options(title="MIB poly pilot, apr. 27th 2020",
-                        admin_password="test", # write a secret password here
+                        admin_password="", # write a secret password here
                         enable_admin_panel=TRUE,
                         researcher_email="cecilie@clin.au.dk",
                         problems_info="Problems? Contact cecilie@clin.au.dk",
