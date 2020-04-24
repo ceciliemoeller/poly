@@ -47,7 +47,7 @@ timeline.push(np_instr);
 var nat_pace = {
   type: 'audio-bpm-button-response',
   stimulus: 'sounds/spontaneous_tap.wav',
-  prompt: "<p class='largegap-above'>Please tap at a steady rate that feels comfortable for you</p>",
+  prompt: "<p class='largegap-above'>Please tap at a steady rate that feels comfortable for you.</p>",
   choices: ["<p class='font'> <strong>Tap here!</strong></p>"]
 
 };
@@ -98,8 +98,8 @@ var test_stimuli = [
 var test = {
   type: "audio-bpm-button-response",
   stimulus: jsPsych.timelineVariable('stimulus'),
-  prompt: "<p>Do you hear a steady beat?</p>" +
-    "<p> Then start tapping!</p>",
+  prompt: "<p>Use your touch screen, touch pad or mouse (left click)</p>",
+    
   choices: ["<p class='font'> <strong>Tap here!</strong></p>"],
   post_trial_gap: 000
   //   response_ends_trial: false
