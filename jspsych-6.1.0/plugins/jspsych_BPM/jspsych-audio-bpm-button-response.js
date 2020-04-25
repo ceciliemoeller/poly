@@ -2,6 +2,7 @@
  * jspsych-audio-bpm-button-response
  * Kristin Diep
  * Cecilie Møller
+ * Benjamin Christensen
  *
  * Plugin for playing an audio file and getting multiple keyboard responses within the same trial.
  * Useful for collecting measures of beats per minute (BPM).
@@ -138,8 +139,25 @@ jsPsych.plugins["audio-bpm-button-response"] = (function () {
         for (var i = 0; i < trial.choices.length; i++) {
             display_element.querySelector('#jspsych-audio-bpm-button-response-button-' + i).addEventListener('mousedown', function (e) {
                 var choice = e.currentTarget.getAttribute('data-choice'); // don't use dataset for jsdom compatibility
+                // jQuery('body #jspsych-audio-bpm-button-response-button-' + i + ' .jspsych-btn').css('background-color', 'purple');
+                console.dir( $(e.target).parent() );
+                // jQuery('body').css('background-color', 'purple');
+                jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn').css('background-color', 'gold');
+                // jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn p').css('color', 'purple');
+                window.setTimeout(function() {
+                    // jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn p').css('color', 'black');
+                    jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn').css('background-color', 'silver');
+                  }, 10);
                 after_response(choice);
             });
+            // $( "body #jspsych-audio-bpm-button-response-button-" + i ).on( "mousedown", function() {
+            //     console.log( 'hej on handler virker og i er !' +i );
+            //     jQuery('body body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn').css('background-color', 'purple');
+            //     jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn p').css('color', 'purple');
+            //     window.setTimeout(function() {
+            //         jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn p').css('color', 'black');
+            //       }, 50);
+            // });
         }
 
         // store multiple responses

@@ -64,7 +64,7 @@ device <-dropdown_page(
                p("First, we need to know which device you are using to take the test?"),
                p("As input methods, you can use touchscreen, touchpad or mouse (left click)."),
                p(strong ("You can not use a keyboard.")),
-               p("Please make sure you stick to your chosen input method throughout the test."),
+               p("Please make sure you stick with your chosen input method throughout the test."),
                ),
   save_answer=TRUE,
   choices = c("Please choose", "Smartphone (touchscreen)","Tablet (touchscreen)","Laptop (touchpad)", "Laptop (external mouse)", "Desktop (external mouse)"),
@@ -80,7 +80,7 @@ headphones<-dropdown_page(
                
   ),
   save_answer=TRUE,
-  choices = c("I will play sounds through...", "on-ear headphones","in-ear headphones","computer's speakers", "external speakers"),
+  choices = c("I will play sounds through...", "on-ear headphones","in-ear headphones","smartphone speakers","computer speakers", "external speakers"),
   alternative_choice = TRUE,
   alternative_text = "Other - please state which?",
   next_button_text = "Next",
@@ -111,7 +111,7 @@ beat <- one_button_page(
 rating<-NAFC_page(
   label = "difficulty",
   prompt = "On a scale from 1-9 where 1 is extremely easy and 9 is extremely difficult, how did you find this tapping task in general?", 
-  choices = c("1","2","3","4","5","6","7","8","9")
+  choices = c("9 - extremely difficult","8","7","6","5","4","3","2","1 - extremely easy")
 )
 # CODE NAME
 id <- text_input_page(
@@ -134,7 +134,7 @@ elts <- list(
   beat,
   elt_save_results_to_disk(complete = FALSE),
   poly_ratio,
-  elt_save_results_to_disk(complete = TRUE),
+  elt_save_results_to_disk(complete = FALSE),
   rating,
   id,
   elt_save_results_to_disk(complete = TRUE),
