@@ -147,7 +147,7 @@ jsPsych.plugins["audio-bpm-button-response"] = (function () {
                 window.setTimeout(function() {
                     // jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn p').css('color', 'black');
                     jQuery('body .jspsych-audio-bpm-button-response-button' + ' .jspsych-btn').css('background-color', 'silver');
-                  }, 10);
+                  }, 30);
                 after_response(choice);
             });
             // $( "body #jspsych-audio-bpm-button-response-button-" + i ).on( "mousedown", function() {

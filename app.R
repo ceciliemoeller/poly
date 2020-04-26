@@ -74,6 +74,19 @@ device <-dropdown_page(
   max_width_pixels = 250
 )
 
+browser <- dropdown_page(
+  label = "browser",
+  prompt = div(p("Which browser are you using?"),
+  ),
+  save_answer=TRUE,
+  choices = c("I am currently using...","Firefox", "Chrome","Edge","Internet Explorer","Safari", "Opera"),
+  alternative_choice = TRUE,
+  alternative_text = "Other - please state which?",
+  next_button_text = "Next",
+  max_width_pixels = 250
+)
+
+
 headphones<-dropdown_page(
   label = "headphones",
   prompt = div(p("How do you play the sounds?"),
@@ -129,6 +142,7 @@ id <- text_input_page(
 
 elts <- list(
   device,
+  browser,
   headphones,
   welcome,
   beat,
