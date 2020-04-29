@@ -123,9 +123,9 @@ beat <- one_button_page(
 
 rating<-NAFC_page(
   label = "difficulty",
-  prompt = "On a scale from 1-9 where 1 is extremely easy and 9 is extremely difficult, how did you find this tapping task in general?", 
-  choices = c("9 - extremely difficult","8","7","6","5","4","3","2","1 - extremely easy")
-)
+  prompt = "In this example, how easy was it for you to find the beat?", 
+  choices = c("1 - extremely easy", "2","3","4","5","6","7","8","9 - extremely difficult"),
+  )
 # CODE NAME
 id <- text_input_page(
   label = "anonymous id",
@@ -141,6 +141,7 @@ id <- text_input_page(
 )
 
 elts <- list(
+  rating,
   device,
   browser,
   headphones,
