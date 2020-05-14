@@ -26,15 +26,16 @@
 
 
 // ratio test trials
-var audio = [
-  "sounds/ratio/f_2-3_80-120.wav",
-  "sounds/ratio/f_2-5_48-120.wav",
-  "sounds/ratio/f_3-5_72-120.wav",
-  "sounds/ratio/m_3-4_90-120.wav",
-  "sounds/ratio/s_2-3_90-135.wav",
-  "sounds/ratio/s_2-5_90-225.wav",
-  "sounds/ratio/s_3-5_90-150.wav",
-];
+var audio = stimuliExpRandomizer.randomizeStimuli('preload');
+// [
+//   "sounds/ratio/f_2-3_80-120.wav",
+//   "sounds/ratio/f_2-5_48-120.wav",
+//   "sounds/ratio/f_3-5_72-120.wav",
+//   "sounds/ratio/m_3-4_90-120.wav",
+//   "sounds/ratio/s_2-3_90-135.wav",
+//   "sounds/ratio/s_2-5_90-225.wav",
+//   "sounds/ratio/s_3-5_90-150.wav",
+// ];
 
 function run_jspsych() {
   jsPsych.init({
@@ -42,6 +43,7 @@ function run_jspsych() {
     display_element: 'js_psych',
     preload_audio: audio,
     use_webaudio: true,
+    intro_text: "Please wait while the files are downloading. It may take a while from outer space.",
     on_finish: function() {
       var json_data = jsPsych.data.get().json();
       Shiny.onInputChange("jspsych_results", json_data);
