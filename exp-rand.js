@@ -11,16 +11,27 @@ var stimuliExpRandomizer = {},
  * we can return the same array when asking for exp data.
  */
 stimuliExpRandomizer.randomizeStimuli = function(type) {
-    var randomNb = stimuliExpRandomizerRandomNb;
-    var dataArray = [
+    var randomNb = stimuliExpRandomizerRandomNb,
+        sound_check_stim = [
+            "sounds/pitch/poly_pitch_marimba_loudness.mp3",
+            "sounds/tempo/poly_tempo_loudness_check.mp3",
+            "sounds/ratio/poly_ratio_loudness_check.mp3",
+        ],
+        dataArray = [
             [
-                "sounds/pitch/3-c4-08_4-c6-8.wav",
-                "sounds/pitch/3-c4-12_4-c6-4.wav",
-                "sounds/pitch/3-c4-16_4-c6-0.wav",
-                "sounds/pitch/3-c6-08_4-c4-8.wav",
-                "sounds/pitch/3-c6-12_4-c4-4.wav",
-                "sounds/pitch/3-c6-16_4-c4-0.wav",
-                 
+                "sounds/pitch/2-C3-1_3-C5-13.mp3",
+                "sounds/pitch/2-C3-4_3-C5-10.mp3",
+                "sounds/pitch/2-C3-7_3-C5-7.mp3",
+                "sounds/pitch/2-C5-1_3-C3-13.mp3",
+                "sounds/pitch/2-C5-4_3-C3-10.mp3",
+                "sounds/pitch/2-C5-7_3-C3-7.mp3",           
+                "sounds/pitch/3-C3-7_4-C5-7.mp3",
+                "sounds/pitch/3-C3-10_4-C5-4.mp3",
+                "sounds/pitch/3-C3-13_4-C5-1.mp3",
+                "sounds/pitch/3-C5-7_4-C3-7.mp3",
+                "sounds/pitch/3-C5-10_4-C3-4.mp3",
+                "sounds/pitch/3-C5-13_4-C3-1.mp3",
+               
             ],
             [
                 "sounds/tempo/67.5-90_-8-8.wav",
@@ -34,15 +45,32 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/tempo/120-160_-16-0.wav",   
             ],
             [
-                "sounds/ratio/f_2-3_80-120.wav",
-                "sounds/ratio/f_2-5_48-120.wav",
-                "sounds/ratio/f_3-5_72-120.wav",
-                "sounds/ratio/m_3-4_90-120.wav",
-                "sounds/ratio/s_2-3_90-135.wav",
-                "sounds/ratio/s_2-5_90-225.wav",
-                "sounds/ratio/s_3-5_90-150.wav",    
+                "sounds/ratio/ratio_subdiv_63ms 3_5.mp3",
+                "sounds/ratio/ratio_subdiv_63ms 4_5.mp3",
+                "sounds/ratio/ratio_subdiv_63ms 5_6.mp3",
+                "sounds/ratio/ratio_subdiv_84ms 3_5.mp3",
+                "sounds/ratio/ratio_subdiv_84ms 4_5.mp3",
+                "sounds/ratio/ratio_subdiv_84ms 5_6.mp3",
+                "sounds/ratio/ratio_subdiv_125ms 2_3.mp3",
+                "sounds/ratio/ratio_subdiv_125ms 2_5.mp3",
+                "sounds/ratio/ratio_subdiv_125ms 3_4.mp3",
+                "sounds/ratio/ratio_subdiv_125ms 3_5.mp3",
+                "sounds/ratio/ratio_subdiv_125ms 4_5.mp3",
+                "sounds/ratio/ratio_subdiv_125ms 5_6.mp3",
+                "sounds/ratio/ratio_subdiv_167ms 2_3.mp3",
+                "sounds/ratio/ratio_subdiv_167ms 2_5.mp3",
+                "sounds/ratio/ratio_subdiv_167ms 3_4.mp3",
+                "sounds/ratio/ratio_subdiv_167ms 3_5.mp3",
+                "sounds/ratio/ratio_subdiv_167ms 4_5.mp3",
+                "sounds/ratio/ratio_subdiv_167ms 5_6.mp3",
+                "sounds/ratio/ratio_subdiv_250ms 2_3.mp3",
+                "sounds/ratio/ratio_subdiv_250ms 2_5.mp3",
+                "sounds/ratio/ratio_subdiv_250ms 2_3.mp3",
+                "sounds/ratio/ratio_subdiv_250ms 2_5.mp3",
+    
             ],
         ];
+
     switch (type) {
         case 'preload':
             console.log('number is ' + randomNb)
@@ -50,7 +78,7 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
             break;
         case 'exp':
             console.log('number is ' + randomNb)
-            return stimuliExpRandomizer.createExpArray(dataArray[randomNb])
+            return [sound_check_stim[randomNb],stimuliExpRandomizer.createExpArray(dataArray[randomNb])]
             break;
         default:
             break;

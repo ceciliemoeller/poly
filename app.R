@@ -14,7 +14,6 @@ library(psychTestR)
 library(tibble)
 
 
-# # Denne er tyvstjålet fra GMSI-scriptet
 # # For jsPsych
 # library_dir <- "jspsych/jspsych-6.1.0"
 # custom_dir <- "jspsych/js"
@@ -24,17 +23,21 @@ jspsych_dir <- "jspsych-6.1.0"
 head <- tags$head(
   # jsPsych files
   
-  # If you want to use original jspsych.js, use this:
-  includeScript(file.path(jspsych_dir, "jspsych.js")),
   
-  # If you want to display text while preloading files (to save time), specify your text
-  # in the jspsych_preloadprogressbar.js file and call it here:
-  # includeScript(file.path(jspsych_dir, "jspsych_preloadprogressbar.js")),
+  # # If you want to use original jspsych.js, use this:
+  # includeScript(file.path(jspsych_dir, "jspsych.js")),
+  
+  # If you want to display text while preloading files (to save time), specify your intro_text
+  # in jsPsych.init (in run-jspsych.js) and call jspsych_preloadprogressbar.js here:
+  includeScript(file.path(jspsych_dir, "jspsych_preloadprogressbar.js")),
   
   includeScript(
     file.path(jspsych_dir, "plugins/jspsych-html-button-response.js")
   ),
   
+  includeScript(
+    file.path(jspsych_dir, "plugins/jspsych-audio-button-response.js")
+  ),
   
   includeScript(
     file.path(jspsych_dir, "plugins/jspsych-html-slider-response.js")
@@ -90,24 +93,20 @@ poly_ratio <- page(
 # PsychTestR elements
 
 
-
+intro <- c(
 welcome <-
   one_button_page(div(
     HTML("<img src='img/au_logo.png'></img> <img src='img/mib_logo.png'></img>"),
     div(
       h3(strong("Welcome!")),
-      p(
-        "Thank you for your interest in participating in Center for Music in the Brain's scientific study on"
-      ),
+      p("Thank you for your interest in participating in Center for Music in the Brain's scientific study on"),
       p(strong("musical beat perception!")),
-      p("The test is fun, fast, and very simple."),
-      p("You will hear some musical rhythms, and your task is to simply"),
-      p(tags$em("tap along to the beat of the rhythms")),
-      p("using the designated button."),
-      p("If possible, find a fairly quiet room so you can easily concentrate on the task.")
+      p("The test is fun, fast, and very simple. You will hear some musical rhythms, and your task is to simply tap along to the beat of the rhythms, using the designated button."),
+      p("Recommendations: take the test in quiet surroundings, use headphones, and do not use the browser 'Safari'.")
       )
-  ))
+  )),
 
+# p("If possible, find a fairly quiet room so you can easily concentrate on the task.")
 
 # PAGES
 device <-dropdown_page(
@@ -134,16 +133,15 @@ device <-dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "device", value = answer, state = state)
   }     
-)
+),
 
 browser <- dropdown_page(
   label = "browser",
   prompt = div(h4(strong("Browser")),
                p("Which browser are you using?"),
-               HTML("<br>"),
-                p("Note to Safari users: Safari may prevent sounds from being played automatically, depending on your computer's settings."),
-                p("If you know how to enable sounds, go ahead. Otherwise, avoiding Safari is probably safest."),
-  ),
+               # HTML("<br>"),
+                p("PLEASE NOTE: Safari may not work, depending on your computer's settings."),
+                  ),
   save_answer=TRUE,
   choices = c("Select current browser","Firefox", "Chrome","Edge","Internet Explorer","Safari", "Opera", "I do not know"),
   alternative_choice = TRUE,
@@ -160,18 +158,17 @@ browser <- dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "browser", value = answer, state = state)
   }  
-)
+),
 
 
 headphones<-dropdown_page(
   label = "headphones",
   prompt = div(h4(strong("Headphones?")),
-               p("If at all possible, we recommend using headphones for better sound quality."),
+               p("If at all possible, please use headphones!"),
                p("How do you play the sounds?"),
-               
   ),
   save_answer=TRUE,
-  choices = c("I will play sounds through...", "around-ear headphones", "on-ear headphones","in-ear headphones","smartphone speakers","laptop/computer speakers", "external speakers"),
+  choices = c("I will play sounds through...", "around-ear headphones", "on-ear headphones","in-ear headphones", "my device's internal speakers", "external speakers"),
   alternative_choice = TRUE,
   alternative_text = "Other - please state which?",
   next_button_text = "Next",
@@ -187,27 +184,29 @@ headphones<-dropdown_page(
     set_global(key = "headphones", value = answer, state = state)
   }  
 )
+)
 
 sound_check<-one_button_page(
   
   body = div(h4(strong("Quick sound check")),
                
-               p("When you click the button below, you will hear scrambled versions of the sounds used in the experiment."),
-               p("It is not pretty, but it allows you to adjust the volume of your device to a comfortable level."),
-               p("If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.")
+               p("When you click the button below, you will hear some random sounds that you can use to adjust the volume of your device to a comfortable level."),
+               # p("If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.")
              ),
   button_text = "Play sounds"
   )
 
 
-rating<-NAFC_page(
-  label = "difficulty",
-  prompt = "In this example, how easy was it for you to find the beat?", 
-  choices = c("1 - extremely easy", "2","3","4","5","6","7","8","9 - extremely difficult"),
-  )
+# rating<-NAFC_page(
+#   label = "difficulty",
+#   prompt = "In this example, how easy was it for you to find the beat?", 
+#   choices = c("1 - extremely easy", "2","3","4","5","6","7","8","9 - extremely difficult"),
+#   )
 
 
 # DEMOGRAPHICS
+
+demographics <- c(
 
 age <-dropdown_page(
   label = "age",
@@ -231,15 +230,14 @@ age <-dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "age", value = answer, state = state)
   }  
-)
-
+),
 
 
 gender<-NAFC_page(
   label = "gender",
   prompt = p(strong ("Whats is your gender?")), 
   choices = c("Female", "Male","Other","I prefer not to tell you"),
-)
+),
 
 # RESIDENCE
 residence <- dropdown_page(
@@ -281,7 +279,7 @@ residence <- dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "residence", value = answer, state = state)
   }     
-)
+),
 
 
 # CHILDHOOD/YOUTH COUNTRY
@@ -324,64 +322,59 @@ youth_country <- dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "youth_country", value = answer, state = state)
   }     
-)
-# GOLD-MSI MUSICAL TRAINING SUBSCALE ITEMS
+),
 
-MT_01<-NAFC_page(
-  label = "MT_01",
-  prompt = p(strong ("I engaged in regular, daily practice of a musical instrument (including voice) for the following number of years:")), 
-  choices = c("0", "1","2","3","4-5","6-9","10 or more"),
+# MOTHER TONGUE
+language <- dropdown_page(
+  label = "language",
+  prompt = p(strong ("Which language(s) do you consider your mother tongue (the language(s) of the family you grew up in)?"),
+          p("If you are bilingual, please select the option 'Other or bilingual' and state the names of the languages beginning with the one with the strongest influence in your daily life.")),
+  save_answer=TRUE,
+  choices = c("Please select",  "Arabic", "Bengali", "Chinese", "Danish", "English", "Hindi", "Japanese", "Portuguese", "Punjabi", "Russian", "Spanish", 
+               "I prefer not to tell you"
+  ),
+  alternative_choice = TRUE,
+  alternative_text = "Other or bilingual (please state which)",
+  next_button_text = "Next",
+  max_width_pixels = 290,
+  validate = function(answer, ...) {
+    if (answer=="Please select")
+      "Please select your mother tongue from the dropdown menu. If your mother tongue is not on the list, or if you are bilingual, select 'Other or bilingual' at the bottom of the list and write the name(s) of the language(s) in the designated field."
+    else if (answer=="") 
+      "If you select 'Other or bilingual' at the bottom of the list, please write the name(s) of the language(s) in the designated field."
+    else TRUE
+  },
+  on_complete = function(answer, state, ...) {
+    set_global(key = "residence", value = answer, state = state)
+  }     
 )
-MT_02<-NAFC_page(
-  label = "MT_02",
-  prompt = p(strong ("At the peak of my interest, I practised my primary instrument for the following number of hours per day:")), 
-  choices = c("0", "0.5", "1","1.5","2","3-4","5 or more"),
 )
 
-#REVERSE ITEM 03
-MT_03<-NAFC_page(
-  label = "MT_03",
-  prompt = p(strong ("I have never been complimented for my talents as a musical performer.")), 
-  choices = c("Completely Disagree", "Strongly Disagree", "Disagree","Neither Agree nor Disagree","Agree","Strongly Agree","Completely Agree"),
-)
+# MUSICAL EXPERIENCE
 
-MT_04<-NAFC_page(
-  label = "MT_04",
-  prompt = p(strong ("I have had formal training in music theory for the following number of years:")), 
-  choices = c("0", "0.5", "1","2","3","4-6", "7 or more"),
-)
+music_exp <- c(
 
-MT_05<-NAFC_page(
-  label = "MT_05",
-  prompt = p(strong ("I have had formal training on a musical instrument (including voice) during my lifetime, for the following number of years:")), 
-  choices = c("0","0.5", "1","2","3-5","6-9","10 or more"),
-)
+
+# ollen
+ollen<-NAFC_page(
+  label = "ollen",
+  prompt = p(strong ("Which title best describes you?")), 
+  choices = c("Nonmusician", "Music-loving nonmusician","Amateur musician","Serious amateur musician","Semiprofessional musician","Professional musician"),
+  on_complete = function(answer, state, ...) {
+    set_global(key = "ollen", value = answer, state = state)
+    if (answer == "Nonmusician"|answer =="Music-loving nonmusician") skip_n_pages(state,3)
+  }
+  ),
+
+#gold-msi item 06 from musical training subscale
 
 MT_06<-NAFC_page(
   label = "MT_06",
-  prompt = p(strong ("I can play the following number of musical instruments:")), 
+  prompt = p(strong ("I can play the following number of musical instruments:")),
   choices = c("0", "1","2","3","4","5","6 or more"),
-)
+),
 
-#REVERSE ITEM 07
-MT_07<-NAFC_page(
-  label = "MT_07",
-  prompt = p(strong ("I would not consider myself a musician.")), 
-  choices = c("Completely Disagree", "Strongly Disagree", "Disagree","Neither Agree nor Disagree","Agree","Strongly Agree","Completely Agree"),
-)
-
-# CREATE LIST OF G_MSI ITEMS TO RANDOMISE
-g_msi_training <- join(
-MT_01,
-MT_02,
-MT_03,
-MT_04,
-MT_05,
-MT_06,
-MT_07
-)
-
-
+# gold-msi instrument item
 instrument <-dropdown_page(
   label = "instrument",
   prompt = p(strong ("The instrument I play best (including voice) is...")), 
@@ -402,47 +395,146 @@ instrument <-dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "instrument", value = answer, state = state)
   }
+),
+
+# custom made question on instrument experience
+
+years_instrument <- dropdown_page(
+  label = "years_instr",
+  prompt = p(strong("For how many years have you played a musical instrument (including voice)?")),
+  save_answer=TRUE,
+  choices = c("Please select", "I don't play any instrument", "Less than one year", "1",	"2",	"3",	"4",	"5",	"6",	"7",	"8",	"9",	"10",	"11",	"12",	"13",	"14",	"15",	"16",	"17",
+              "18",	"19",	"20",	"21",	"22",	"23",	"24",	"25",	"26",	"27",	"28",	"29",	"30",	"31",	"32",	"33","34",	"35",	"36",	"37",	"38",	"39",	"40",	"41",	"42",
+              "43",	"44",	"45",	"46",	"47",	"48",	"49",	"50",	"51",	"52",	"53",	"54",	"55",	"56",	"57",	"58",	"59",	"60",	"61",	"62",	"63",	"64","65",	"66",	"67",
+              "68",	"69",	"70",	"71",	"72",	"73",	"74",	"75",	"76",	"77",	"78",	"79",	"80 years or more", "I prefer not to tell you"),
+
+  next_button_text = "Next",
+  max_width_pixels = 250,
+  validate = function(answer, ...) {
+    if (answer=="Please select")
+      "Please provide your best estimate of the number of years you have played a musical instrument (click the small arrow on the right of the box to see the options). We ask because it matters for the analyses of the data you provide."
+    else TRUE
+  },
+  on_complete = function(answer, state, ...) {
+    set_global(key = "age", value = answer, state = state)
+  }  
+) 
+)
+# onset_age <- dropdown_page(
+#   label = "age",
+#   prompt = p(strong("What age did you start to play an instrument?")),
+#   save_answer=TRUE,
+#   choices = c("Please select", "I don't play any instrument", "1",	"2",	"3",	"4",	"5",	"6",	"7",	"8",	"9",	"10",	"11",	"12",	"13",	"14",	"15",	"16",	"17",
+#               "18",	"19",	"20",	"21",	"22",	"23",	"24",	"25",	"26",	"27",	"28",	"29",	"30",	"31",	"32",	"33","34",	"35",	"36",	"37",	"38",	"39",	"40",	"41",	"42",
+#               "43",	"44",	"45",	"46",	"47",	"48",	"49",	"50",	"51",	"52",	"53",	"54",	"55",	"56",	"57",	"58",	"59",	"60",	"61",	"62",	"63",	"64","65",	"66",	"67",
+#               "68",	"69",	"70",	"71",	"72",	"73",	"74",	"75",	"76",	"77",	"78",	"79",	"80 or above", "I prefer not to tell you"),
+#   # alternative_choice = TRUE,
+#   # alternative_text = "I prefer not to tell you",
+#   next_button_text = "Next",
+#   max_width_pixels = 250,
+#   validate = function(answer, ...) {
+#     if (answer=="Please select")
+#       "Please state the age at which you started to play a musical instrument (click the small arrow on the right of the box to see the options). We ask because it matters for the analyses of the data you provide."
+#     else TRUE
+#   },
+#   on_complete = function(answer, state, ...) {
+#     set_global(key = "age", value = answer, state = state)
+#   }  
+# ) 
+# # GOLD-MSI MUSICAL TRAINING SUBSCALE ITEMS
+# 
+# MT_01<-NAFC_page(
+#   label = "MT_01",
+#   prompt = p(strong ("I engaged in regular, daily practice of a musical instrument (including voice) for the following number of years:")), 
+#   choices = c("0", "1","2","3","4-5","6-9","10 or more"),
+# )
+# MT_02<-NAFC_page(
+#   label = "MT_02",
+#   prompt = p(strong ("At the peak of my interest, I practised my primary instrument for the following number of hours per day:")), 
+#   choices = c("0", "0.5", "1","1.5","2","3-4","5 or more"),
+# )
+# 
+# #REVERSE ITEM 03
+# MT_03<-NAFC_page(
+#   label = "MT_03",
+#   prompt = p(strong ("I have never been complimented for my talents as a musical performer.")), 
+#   choices = c("Completely Disagree", "Strongly Disagree", "Disagree","Neither Agree nor Disagree","Agree","Strongly Agree","Completely Agree"),
+# )
+# 
+# MT_04<-NAFC_page(
+#   label = "MT_04",
+#   prompt = p(strong ("I have had formal training in music theory for the following number of years:")), 
+#   choices = c("0", "0.5", "1","2","3","4-6", "7 or more"),
+# )
+# 
+# MT_05<-NAFC_page(
+#   label = "MT_05",
+#   prompt = p(strong ("I have had formal training on a musical instrument (including voice) during my lifetime, for the following number of years:")), 
+#   choices = c("0","0.5", "1","2","3-5","6-9","10 or more"),
+# )
+# 
+# MT_06<-NAFC_page(
+#   label = "MT_06",
+#   prompt = p(strong ("I can play the following number of musical instruments:")), 
+#   choices = c("0", "1","2","3","4","5","6 or more"),
+# )
+# 
+# #REVERSE ITEM 07
+# MT_07<-NAFC_page(
+#   label = "MT_07",
+#   prompt = p(strong ("I would not consider myself a musician.")), 
+#   choices = c("Completely Disagree", "Strongly Disagree", "Disagree","Neither Agree nor Disagree","Agree","Strongly Agree","Completely Agree"),
+# )
+# 
+# # CREATE LIST OF G_MSI ITEMS TO RANDOMISE
+# g_msi_training <- join(
+# MT_01,
+# MT_02,
+# MT_03,
+# MT_04,
+# MT_05,
+# MT_06,
+# MT_07
+# )
+
+  
+# COMMENTS
+
+duplets <- dropdown_page(
+  label = "duplets",
+  prompt = p(strong("Have you taken this exact same test before?")),
+  save_answer=TRUE,
+  choices = c("Please select", "No", "Yes, once before", "Yes, twice before",	"Yes, three times before",	"Yes, four times before",	"Yes, five times before",	"Yes, six or more times before"),
+  # alternative_choice = TRUE,
+  # alternative_text = "I prefer not to tell you",
+  next_button_text = "Next",
+  max_width_pixels = 250,
+  validate = function(answer, ...) {
+    if (answer=="Please select")
+      "Please let us know if you tried this exact same test before. We ask because it matters for the analyses of the data you provide. If you like, you can provide additional comments in the next and final question."
+    else TRUE
+  },
+  on_complete = function(answer, state, ...) {
+    set_global(key = "age", value = answer, state = state)
+  }  
 )
 
- 
-onset_age <- dropdown_page(
-    label = "age",
-    prompt = p(strong("What age did you start to play an instrument?")),
-    save_answer=TRUE,
-    choices = c("Please select", "I don't play any instrument", "1",	"2",	"3",	"4",	"5",	"6",	"7",	"8",	"9",	"10",	"11",	"12",	"13",	"14",	"15",	"16",	"17",
-                "18",	"19",	"20",	"21",	"22",	"23",	"24",	"25",	"26",	"27",	"28",	"29",	"30",	"31",	"32",	"33","34",	"35",	"36",	"37",	"38",	"39",	"40",	"41",	"42",
-                "43",	"44",	"45",	"46",	"47",	"48",	"49",	"50",	"51",	"52",	"53",	"54",	"55",	"56",	"57",	"58",	"59",	"60",	"61",	"62",	"63",	"64","65",	"66",	"67",
-                "68",	"69",	"70",	"71",	"72",	"73",	"74",	"75",	"76",	"77",	"78",	"79",	"80 or above", "I prefer not to tell you"),
-    # alternative_choice = TRUE,
-    # alternative_text = "I prefer not to tell you",
-    next_button_text = "Next",
-    max_width_pixels = 250,
-    validate = function(answer, ...) {
-      if (answer=="Please select")
-        "Please state the age at which you started to play a musical instrument (click the small arrow on the right of the box to see the options). We ask because it matters for the analyses of the data you provide."
-      else TRUE
-    },
-    on_complete = function(answer, state, ...) {
-      set_global(key = "age", value = answer, state = state)
-    }  
-  ) 
-  
-# DEVELOPERS COMMENTS
-dev_comments <- text_input_page(
-  label = "notes to self",
+
+comments <- text_input_page(
+  label = "comments",
   one_line = FALSE,
   width = "400px",
   prompt = div(
     HTML("<br>"),
-    p("Optional: Notes to self?"),
+    p(strong("Optional: Is there anything else you would like to tell us?")),
     HTML("<br>"),
-    p("Here you can provide comments that will be saved in the datafile you just generated."),
-    p("For development purposes only ;)"),
-    p(strong("JAN/SÀNDER/CECILIE SAYS:"))),
+    p("Here, you can provide comments about your experience of participating in this study, if you think it may be useful for the researchers to know."),
+    p("Please do not write any personal information such as full name, email address, phone number etc."),
+    p("You are also welcome to contact us by email on cecilie@clin.au.dk")
+  ),
   save_answer = T,
   button_text = "Next"
 )
-
 thanks<-final_page(div(
       HTML("<img src='img/au_logo.png'></img> <img src='img/mib_logo.png'></img>"),
                div(
@@ -455,25 +547,19 @@ thanks<-final_page(div(
 
 
 elts <- join(
-  welcome,
-  device,
-  browser,
-  headphones,
+
+  intro,
   elt_save_results_to_disk(complete = FALSE),
   sound_check,
   poly_ratio,
   elt_save_results_to_disk(complete = FALSE),
-  age,
-  gender,
-  residence,
-  youth_country,
+  demographics,
   elt_save_results_to_disk(complete = FALSE),
-  randomise_at_run_time("item_order", g_msi_training),
-  instrument,
-  onset_age,
+  # randomise_at_run_time("item_order", g_msi_training),
+  music_exp,
   elt_save_results_to_disk(complete = FALSE),
- # rating,
-  dev_comments,
+  duplets,
+  comments,
   elt_save_results_to_disk(complete = TRUE),
   thanks
 )

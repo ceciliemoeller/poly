@@ -108,8 +108,6 @@ window.jsPsych = (function() {
     // override default options if user specifies an option
     opts = Object.assign({}, defaults, options);
 
-    console.log(opts.intro_text)
-
     // set DOM element where jsPsych will render content
     // if undefined, then jsPsych will use the <body> tag and the entire page
     if(typeof opts.display_element == 'undefined'){
@@ -2571,7 +2569,7 @@ jsPsych.pluginAPI = (function() {
       module.preloadAudioFiles(audio, function() {
           module.preloadVideo(video, function() {
               jsPsych.getDisplayElement().innerHTML = pb_html + "<div id='jaja'>hej </div>";
-              //callback();
+              callback();
           }, update_loading_progress_bar);
       }, update_loading_progress_bar);
     }, update_loading_progress_bar);
