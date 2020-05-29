@@ -206,7 +206,7 @@ sound_check<-one_button_page(
 
 # DEMOGRAPHICS
 
-demographics <- c(
+
 
 age <-dropdown_page(
   label = "age",
@@ -230,15 +230,16 @@ age <-dropdown_page(
   on_complete = function(answer, state, ...) {
     set_global(key = "age", value = answer, state = state)
   }  
-),
+)
 
 
 gender<-NAFC_page(
   label = "gender",
   prompt = p(strong ("Whats is your gender?")), 
   choices = c("Female", "Male","Other","I prefer not to tell you"),
-),
+)
 
+demographics <- c(
 # RESIDENCE
 residence <- dropdown_page(
   label = "residence",
@@ -553,6 +554,8 @@ elts <- join(
   sound_check,
   poly_ratio,
   elt_save_results_to_disk(complete = FALSE),
+  age,
+  gender,
   demographics,
   elt_save_results_to_disk(complete = FALSE),
   # randomise_at_run_time("item_order", g_msi_training),
