@@ -65,8 +65,8 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/ratio/ratio_subdiv_167ms_5_6.mp3",
                 "sounds/ratio/ratio_subdiv_250ms_2_3.mp3",
                 "sounds/ratio/ratio_subdiv_250ms_2_5.mp3",
-                "sounds/ratio/ratio_subdiv_250ms_2_3.mp3",
-                "sounds/ratio/ratio_subdiv_250ms_2_5.mp3",
+                "sounds/ratio/ratio_subdiv_333ms_2_3.mp3",
+                "sounds/ratio/ratio_subdiv_333ms_2_5.mp3",
     
             ],
         ];

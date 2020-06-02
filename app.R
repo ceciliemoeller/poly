@@ -197,12 +197,6 @@ sound_check<-one_button_page(
   )
 
 
-# rating<-NAFC_page(
-#   label = "difficulty",
-#   prompt = "In this example, how easy was it for you to find the beat?", 
-#   choices = c("1 - extremely easy", "2","3","4","5","6","7","8","9 - extremely difficult"),
-#   )
-
 
 # DEMOGRAPHICS
 
@@ -556,12 +550,14 @@ elts <- join(
   elt_save_results_to_disk(complete = FALSE),
   age,
   gender,
+  elt_save_results_to_disk(complete = FALSE),
   demographics,
   elt_save_results_to_disk(complete = FALSE),
   # randomise_at_run_time("item_order", g_msi_training),
   music_exp,
   elt_save_results_to_disk(complete = FALSE),
   duplets,
+  elt_save_results_to_disk(complete = TRUE),
   comments,
   elt_save_results_to_disk(complete = TRUE),
   thanks
@@ -570,7 +566,7 @@ elts <- join(
 
  make_test(
      elts = elts,
-     opt = test_options(title="MIB poly pilot, apr. 27th 2020",
+     opt = test_options(title="Poly pilot in dev, June 2nd 2020",
                         admin_password="", # write a secret password here
                         enable_admin_panel=TRUE,
                         researcher_email="cecilie@clin.au.dk",
