@@ -102,7 +102,8 @@ welcome <-
       p("Thank you for your interest in participating in Center for Music in the Brain's scientific study on"),
       p(strong("musical beat perception!")),
       p("The test is fun, fast, and very simple. You will hear some musical rhythms, and your task is to simply tap along to the beat of the rhythms, using the designated button."),
-      p("Recommendations: take the test in quiet surroundings, use headphones, and do not use the browser 'Safari'.")
+      p("Recommendations: take the test in quiet surroundings, use headphones, and do not use the browser 'Safari'."),
+      p("You can expect this to take 10-15 minutes.")
       )
   )),
 
@@ -113,7 +114,7 @@ device <-dropdown_page(
   label = "device",
   prompt = div(h4(strong("Device")),
                p("First, we need to know which device you are using to take the test?"),
-               p("As input methods, you can use touchscreen, touchpad or mouse (left click)."),
+               p("As input method it is better to use a touchscreen, alternatively a touchpad or mouse (left click)."),
                p(strong ("You can not use a keyboard.")),
                p("Please make sure you stick with your chosen input method throughout the test."),
                ),
@@ -172,7 +173,7 @@ headphones<-dropdown_page(
   alternative_choice = TRUE,
   alternative_text = "Other - please state which?",
   next_button_text = "Next",
-  max_width_pixels = 250,
+  max_width_pixels = 260,
   validate = function(answer, ...) {
     if (answer=="I will play sounds through...")
       "Please tells how you will hear the sounds (click the small arrow on the right of the first box to see the options). We ask because it matters for the analyses of the data you provide."
@@ -245,7 +246,7 @@ residence <- dropdown_page(
               "Cameroon	", "Canada	", "Cape Verde	", "Cayman Islands	", "Central African Republic	", "Chad	", "Chile	", "China	", "China - Hong Kong / Macau	", "Colombia ",
               "Comoros	", "Congo	", "Congo, Democratic Republic of	", "Costa Rica	", "Croatia	", "Cuba	", "Cyprus	", "Czech Republic	", "Denmark	", "Djibouti	", "Dominica	", 
               "Dominican Republic	", "Ecuador	", "Egypt	", "El Salvador	", "Equatorial Guinea	", "Eritrea	", "Estonia	", "Ethiopia	", "Fiji	", "Finland	", "France	", 
-              "French Guiana	", "Gabon	", "Gambia	", "Georgia	", "Germany	", "Ghana	", "Great Britain	", "Greece	", "Grenada	", "Guadeloupe	", "Guatemala	", "Guinea	", 
+              "French Guiana	", "Gabon	", "Gambia	", "Georgia	", "Germany	", "Ghana	", "Greece	", "Grenada	", "Guadeloupe	", "Guatemala	", "Guinea	", 
               "Guinea-Bissau	", "Guyana	", "Haiti	", "Honduras	", "Hungary	", "Iceland ", "India	", "Indonesia	", "Iran	", "Iraq	", "Israel and the Occupied Territories	",
               "Italy	", "Ivory Coast (Cote d'Ivoire)	", "Jamaica	", "Japan	", "Jordan	", "Kazakhstan	", "Kenya	", "Korea, Democratic Republic of (North Korea)	",
               "Korea, Republic of (South Korea)	", "Kosovo	", "Kuwait	", "Kyrgyz Republic (Kyrgyzstan)	", "Laos	", "Latvia	", "Lebanon	", "Lesotho	", "Liberia	",
@@ -253,11 +254,11 @@ residence <- dropdown_page(
               "Malta	", "Martinique	", "Mauritania	", "Mauritius	", "Mayotte	", "Mexico	", "Moldova, Republic of	", "Monaco	", "Mongolia	", "Montenegro	",
               "Montserrat	", "Morocco	", "Mozambique	", "Myanmar/Burma	", "Namibia	", "Nepal", "New Zealand	", "Nicaragua	", "Niger	", "Nigeria	", "Norway	",
               "Oman	", "Pacific Islands	", "Pakistan	", "Panama	", "Papua New Guinea	", "Paraguay	", "Peru	", "Philippines	", "Poland	", "Portugal	",
-              "Puerto Rico	", "Qatar	", "Reunion	", "Romania	", "Russian Federation	", "Rwanda	", "Saint Kitts and Nevis	", "Saint Lucia	", "Saint Vincent and the Grenadines	",
+              "Puerto Rico	", "Qatar	", "Republic of Ireland ", "Reunion	", "Romania	", "Russian Federation	", "Rwanda	", "Saint Kitts and Nevis	", "Saint Lucia	", "Saint Vincent and the Grenadines	",
               "Samoa	", "Sao Tome and Principe	", "Saudi Arabia	", "Senegal	", "Serbia	", "Seychelles	", "Sierra Leone	", "Singapore	", "Slovak Republic (Slovakia)	",
               "Slovenia	", "Solomon Islands	", "Somalia	", "South Africa	", "South Sudan	", "Spain	", "Sri Lanka	", "Sudan	", "Suriname	", "Swaziland	", "Sweden	",
               "Switzerland	", "Syria	", "Tajikistan	", "Tanzania", "Thailand	", "Netherlands	", "Timor Leste	", "Togo	", "Trinidad & Tobago	", "Tunisia	", "Turkey	",
-              "Turkmenistan	", "Turks & Caicos Islands	", "Uganda	", "Ukraine	", "United Arab Emirates	", "United States of America (USA)	", "Uruguay	", "Uzbekistan	",
+              "Turkmenistan	", "Turks & Caicos Islands	", "Uganda	", "UK ", "Ukraine	", "United Arab Emirates	", "United States of America (USA)	", "Uruguay	", "Uzbekistan	",
               "Venezuela	", "Vietnam	", "Virgin Islands (UK)	", "Virgin Islands (US)	", "Yemen	", "Zambia	", "Zimbabwe", "I prefer not to tell you"
 ),
   alternative_choice = TRUE,
@@ -288,7 +289,7 @@ youth_country <- dropdown_page(
               "Cameroon	", "Canada	", "Cape Verde	", "Cayman Islands	", "Central African Republic	", "Chad	", "Chile	", "China	", "China - Hong Kong / Macau	", "Colombia ",
               "Comoros	", "Congo	", "Congo, Democratic Republic of	", "Costa Rica	", "Croatia	", "Cuba	", "Cyprus	", "Czech Republic	", "Denmark	", "Djibouti	", "Dominica	", 
               "Dominican Republic	", "Ecuador	", "Egypt	", "El Salvador	", "Equatorial Guinea	", "Eritrea	", "Estonia	", "Ethiopia	", "Fiji	", "Finland	", "France	", 
-              "French Guiana	", "Gabon	", "Gambia	", "Georgia	", "Germany	", "Ghana	", "Great Britain	", "Greece	", "Grenada	", "Guadeloupe	", "Guatemala	", "Guinea	", 
+              "French Guiana	", "Gabon	", "Gambia	", "Georgia	", "Germany	", "Ghana	", "Greece	", "Grenada	", "Guadeloupe	", "Guatemala	", "Guinea	", 
               "Guinea-Bissau	", "Guyana	", "Haiti	", "Honduras	", "Hungary	", "Iceland ", "India	", "Indonesia	", "Iran	", "Iraq	", "Israel and the Occupied Territories	",
               "Italy	", "Ivory Coast (Cote d'Ivoire)	", "Jamaica	", "Japan	", "Jordan	", "Kazakhstan	", "Kenya	", "Korea, Democratic Republic of (North Korea)	",
               "Korea, Republic of (South Korea)	", "Kosovo	", "Kuwait	", "Kyrgyz Republic (Kyrgyzstan)	", "Laos	", "Latvia	", "Lebanon	", "Lesotho	", "Liberia	",
@@ -296,11 +297,11 @@ youth_country <- dropdown_page(
               "Malta	", "Martinique	", "Mauritania	", "Mauritius	", "Mayotte	", "Mexico	", "Moldova, Republic of	", "Monaco	", "Mongolia	", "Montenegro	",
               "Montserrat	", "Morocco	", "Mozambique	", "Myanmar/Burma	", "Namibia	", "Nepal", "New Zealand	", "Nicaragua	", "Niger	", "Nigeria	", "Norway	",
               "Oman	", "Pacific Islands	", "Pakistan	", "Panama	", "Papua New Guinea	", "Paraguay	", "Peru	", "Philippines	", "Poland	", "Portugal	",
-              "Puerto Rico	", "Qatar	", "Reunion	", "Romania	", "Russian Federation	", "Rwanda	", "Saint Kitts and Nevis	", "Saint Lucia	", "Saint Vincent and the Grenadines	",
+              "Puerto Rico	", "Qatar	", "Republic of Ireland ", "Reunion	", "Romania	", "Russian Federation	", "Rwanda	", "Saint Kitts and Nevis	", "Saint Lucia	", "Saint Vincent and the Grenadines	",
               "Samoa	", "Sao Tome and Principe	", "Saudi Arabia	", "Senegal	", "Serbia	", "Seychelles	", "Sierra Leone	", "Singapore	", "Slovak Republic (Slovakia)	",
               "Slovenia	", "Solomon Islands	", "Somalia	", "South Africa	", "South Sudan	", "Spain	", "Sri Lanka	", "Sudan	", "Suriname	", "Swaziland	", "Sweden	",
               "Switzerland	", "Syria	", "Tajikistan	", "Tanzania", "Thailand	", "Netherlands	", "Timor Leste	", "Togo	", "Trinidad & Tobago	", "Tunisia	", "Turkey	",
-              "Turkmenistan	", "Turks & Caicos Islands	", "Uganda	", "Ukraine	", "United Arab Emirates	", "United States of America (USA)	", "Uruguay	", "Uzbekistan	",
+              "Turkmenistan	", "Turks & Caicos Islands	", "Uganda	", "UK ", "Ukraine	", "United Arab Emirates	", "United States of America (USA)	", "Uruguay	", "Uzbekistan	",
               "Venezuela	", "Vietnam	", "Virgin Islands (UK)	", "Virgin Islands (US)	", "Yemen	", "Zambia	", "Zimbabwe", "I prefer not to tell you"
   ),
   alternative_choice = TRUE,
@@ -536,31 +537,38 @@ thanks<-final_page(div(
             h3(strong("Thanks very much!")),
             p("We hope you enjoyed taking part in this scientific experiment."),
             p("The data you provided is very valuable to us."),
-            p("It has been saved now and you can safely close the browser window.")
-                  )
+            p("If you want to, you can challenge your friends and followers to try it out too. Just click the share buttons below."),
+            HTML("<br>"),
+            HTML('<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fmusicinthebrain.au.dk%2Fthe-hand-washing-song-2020%2F&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>'),
+            HTML('<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="I just participated in this online scientific experiment on musical beat perception from Center for Music in the Brain, Aarhus University. Can you keep the beat? Try it out! " data-url="https://musicinthebrain.au.dk/the-hand-washing-song-2020/" data-via="musicbrainAU" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'),
+            p("............."),
+            HTML("<br>"),
+            
+            p("Your data has been saved now and you can safely close the browser window.")
+             )
             ))
 
 
 elts <- join(
 
-  intro,
-  elt_save_results_to_disk(complete = FALSE),
-  sound_check,
-  poly_ratio,
-  elt_save_results_to_disk(complete = FALSE),
-  age,
-  gender,
-  elt_save_results_to_disk(complete = FALSE),
-  demographics,
-  elt_save_results_to_disk(complete = FALSE),
-  # randomise_at_run_time("item_order", g_msi_training),
-  music_exp,
-  elt_save_results_to_disk(complete = FALSE),
-  duplets,
-  elt_save_results_to_disk(complete = TRUE),
-  comments,
-  elt_save_results_to_disk(complete = TRUE),
-  thanks
+   intro,
+   elt_save_results_to_disk(complete = FALSE),
+   sound_check,
+   poly_ratio,
+   elt_save_results_to_disk(complete = FALSE),
+   age,
+   gender,
+   elt_save_results_to_disk(complete = FALSE),
+   demographics,
+   elt_save_results_to_disk(complete = FALSE),
+   # randomise_at_run_time("item_order", g_msi_training),
+   music_exp,
+   elt_save_results_to_disk(complete = FALSE),
+   duplets,
+   elt_save_results_to_disk(complete = TRUE),
+   comments,
+   elt_save_results_to_disk(complete = TRUE),
+   thanks
 )
 
 

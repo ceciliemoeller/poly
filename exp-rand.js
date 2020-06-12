@@ -30,8 +30,7 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/pitch/3-C3-13_4-C5-1.mp3",
                 "sounds/pitch/3-C5-7_4-C3-7.mp3",
                 "sounds/pitch/3-C5-10_4-C3-4.mp3",
-                "sounds/pitch/3-C5-13_4-C3-1.mp3",
-               
+                "sounds/pitch/3-C5-13_4-C3-1.mp3"               
             ],
             [
                 "sounds/tempo/67.5-90_-8-8.wav",
@@ -42,7 +41,7 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/tempo/90-120_-16-0.wav",
                 "sounds/tempo/120-160_-8-8.wav",
                 "sounds/tempo/120-160_-12-4.wav",
-                "sounds/tempo/120-160_-16-0.wav",   
+                "sounds/tempo/120-160_-16-0.wav"   
             ],
             [
                 "sounds/ratio/ratio_subdiv_63ms_3_5.mp3",
@@ -66,8 +65,7 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/ratio/ratio_subdiv_250ms_2_3.mp3",
                 "sounds/ratio/ratio_subdiv_250ms_2_5.mp3",
                 "sounds/ratio/ratio_subdiv_333ms_2_3.mp3",
-                "sounds/ratio/ratio_subdiv_333ms_2_5.mp3",
-    
+                "sounds/ratio/ratio_subdiv_333ms_2_5.mp3"    
             ],
         ];
 

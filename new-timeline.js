@@ -17,28 +17,28 @@ var calibrate = {
   stimulus: soundcheck_nb,
   prompt: 
   // "<h4><strong>Quick sound check</strong></h4>" +
-  "<p class='gap-above'>Please adjust the volume of your device to a comfortable level where you can clearly hear the sounds. Then click the button above.</p>"+
+  "<p class='gap-above'>Please adjust the volume of your device to a comfortable level where you can clearly hear the sounds. Then click 'Continue!' above.</p>"+
   "<p class='gap-above'>..........</p>"+
   "<p class='font15'>If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge..</p>",
-  choices: ["<p class='font15'><strong>Volume is comfortable now.</strong></p>"+
+  choices: ["<p class='font15'><strong>Play sound again</strong></p>", "<p class='font15'><strong>Volume is comfortable now.</strong></p>"+
   "<p class='font20'><strong> Continue!</strong></p>"],
+  margin_vertical: '2px'
  };
 
- timeline.push(calibrate);
+loop_calibrate ={
+  timeline:[calibrate],
+  loop_function: function(data){
+    if(data.values()[0].button_pressed== 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+};
 
- // FIX THIS LOOP FUNCTION
-// loop_calibrate ={
-//   timeline:[calibrate],
-//   loop_function: function(data){
-//     if(jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NO_KEYS') == data.values()[0].key_press){
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
-// };
 
-// timeline.push(loop_calibrate);
+
+timeline.push(loop_calibrate);
 
 
 /* assess spontaneous motor speed (SMS) */

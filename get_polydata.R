@@ -103,19 +103,19 @@ for (i in 1:length(files)) {
       taps<-reshaped['rt',]
       # and paste the taps into the column in output which is named according to conds (stimulus name)
       output[i,conds]<-taps
-
-# extract stimulus presentation order and ratings
-      
-    tr_ind<-reshaped['trial_index',]
-    stim<-reshaped['stimulus',]
-    output[i,tr_ind]<-stim
-
-    rating<-subset(jsdata, trial_type=="html-slider-response")
-    t_rating <- t(rating)
-
-    tr_ind<-t_rating['trial_index',]
-    verdict<-t_rating['response',]
-    output[i,tr_ind]<-verdict
+# 
+# # extract stimulus presentation order and ratings
+# 
+#     tr_ind<-reshaped['trial_index',]
+#     stim<-reshaped['stimulus',]
+#     output[i,tr_ind]<-stim
+# 
+#     rating<-subset(jsdata, trial_type=="html-slider-response")
+#     t_rating <- t(rating)
+# 
+#     tr_ind<-t_rating['trial_index',]
+#     verdict<-t_rating['response',]
+#     output[i,tr_ind]<-verdict
 
   }
 }
