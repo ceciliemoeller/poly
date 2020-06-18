@@ -10,7 +10,6 @@ function run_jspsych() {
     display_element: 'js_psych',
     preload_audio: audio,
     use_webaudio: true,
-    intro_text: "hej",
     intro_text: "<h4><strong>Quick sound check</strong></h4>" +
     "<p class='gap-above'>(One moment, please. The experiment is loading. This may take a while on slow connections.)</p>"+
     // "<p class='largegap-above'></p>"+

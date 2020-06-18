@@ -41,8 +41,8 @@ loop_calibrate ={
 timeline.push(loop_calibrate);
 
 
-/* assess spontaneous motor speed (SMS) */
-var sms_instr = {
+/* assess spontaneous motor tempo (SMT) */
+var smt_instr = {
   type: "html-button-response",
   stimulus: "<h4><strong>Your spontaneous tempo</strong></h4>" +
   "<p>To warm up, we would like to start by asking you to tap at a steady rate that feels comfortable for you. Please tap with the index finger (on screen or mouse) of your dominant hand.</p>" +
@@ -51,9 +51,9 @@ var sms_instr = {
   choices: ["Click here to Start"]
 };
 
-timeline.push(sms_instr);
+timeline.push(smt_instr);
 
-var nat_pace = {
+var smt = {
   type: 'audio-bpm-button-response',
   stimulus: 'sounds/spontaneous_tap_15s.mp3',
   prompt: "<p class='largegap-above'>Please tap at a steady rate that feels comfortable for you.</p>",
@@ -61,7 +61,7 @@ var nat_pace = {
 
 };
 
-timeline.push(nat_pace);
+timeline.push(smt);
 
 /* define instructions trial */
 var instructions_I = {

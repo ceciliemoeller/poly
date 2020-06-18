@@ -1,13 +1,23 @@
 var stimuliExpRandomizer = {},
-    stimuliExpRandomizerRandomNb = Math.floor(Math.random() * 3);
-  
+    stimuliExpRandomizerRandomNb = Math.floor(Math.random() * 10);
+
+if (stimuliExpRandomizerRandomNb < 3){
+    stimuliExpRandomizerRandomNb = 0;
+}
+else if (stimuliExpRandomizerRandomNb < 6){
+    stimuliExpRandomizerRandomNb = 1;
+}
+else {
+    stimuliExpRandomizerRandomNb = 2;
+}
+
 
 /**
  * This function takes a type parameter, deciding
  * if we are asking for preload or exp data.
  * 
  * When requesting preload data, we take a random
- * array of stimulis. This result is stores so that
+ * array of stimulis. This result is stored so that
  * we can return the same array when asking for exp data.
  */
 stimuliExpRandomizer.randomizeStimuli = function(type) {
@@ -30,18 +40,27 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/pitch/3-C3-13_4-C5-1.mp3",
                 "sounds/pitch/3-C5-7_4-C3-7.mp3",
                 "sounds/pitch/3-C5-10_4-C3-4.mp3",
-                "sounds/pitch/3-C5-13_4-C3-1.mp3"               
+                "sounds/pitch/3-C5-13_4-C3-1.mp3"            
             ],
             [
-                "sounds/tempo/67.5-90_-8-8.wav",
-                "sounds/tempo/67.5-90_-12-4.wav",
-                "sounds/tempo/67.5-90_-16-0.wav",
-                "sounds/tempo/90-120_-8-8.wav",
-                "sounds/tempo/90-120_-12-4.wav",
-                "sounds/tempo/90-120_-16-0.wav",
-                "sounds/tempo/120-160_-8-8.wav",
-                "sounds/tempo/120-160_-12-4.wav",
-                "sounds/tempo/120-160_-16-0.wav"   
+                "sounds/tempo/2_3_40_60.mp3",
+                "sounds/tempo/2_3_60_90.mp3",
+                "sounds/tempo/2_3_90_135.mp3",
+                "sounds/tempo/2_3_120_180.mp3",
+                "sounds/tempo/2_3_135_202.5.mp3",
+                "sounds/tempo/2_3_168.7_253.1.mp3",
+                "sounds/tempo/2_3_202.5_303.7.mp3",
+                "sounds/tempo/2_3_303.7_455.6.mp3",
+                "sounds/tempo/3_4_38_50.6.mp3",
+                "sounds/tempo/3_4_50.6_67.5.mp3",
+                "sounds/tempo/3_4_67.5_90.mp3",
+                "sounds/tempo/3_4_90_120.mp3",
+                "sounds/tempo/3_4_120_160.mp3",
+                "sounds/tempo/3_4_160_213.3.mp3",
+                "sounds/tempo/3_4_186.7_248.9.mp3",
+                "sounds/tempo/3_4_213.3_284.4.mp3",
+                "sounds/tempo/3_4_284.4_379.2.mp3",
+                "sounds/tempo/3_4_379.2_505.7.mp3"
             ],
             [
                 "sounds/ratio/ratio_subdiv_63ms_3_5.mp3",
