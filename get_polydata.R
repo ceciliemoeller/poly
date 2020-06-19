@@ -12,6 +12,7 @@
 library(jsonlite)
 library(dplyr)
 library(ggplot2)
+library(gglearn2)
 # SET WORKING DIRECTORY 
 
 setwd("C:/Users/au213911/Documents/poly_online")
@@ -135,10 +136,37 @@ emptycols <- colSums(is.na(output_r)) == nrow(output_r)
 output_r <- output_r[!emptycols]
 
 
-write.csv(output_p, file = "./pitchtaps.csv")
-write.csv(output_t, file = "./tempotaps.csv")
-write.csv(output_r, file = "./ratiotaps.csv")
-write.csv(output, file = "./ptrtaps.csv")
+# write.csv(output_p, file = "./pitchtaps.csv")
+# write.csv(output_t, file = "./tempotaps.csv")
+# write.csv(output_r, file = "./ratiotaps.csv")
+# write.csv(output, file = "./ptrtaps.csv")
+
+
+
+##################
+# PLOT
+##################
+
+
+###
+# run shiny app to create plots
+
+# gglearn(dataset = output)
+# 
+
+
+ggplot(output, aes(x = soundcheck, fill=complete)) + 
+  geom_bar()
+  
+
+
+ggplot(output, aes(x = browser)) + 
+  geom_bar()+
+facet_wrap(~complete)
+
+ggplot(output, aes(x = device)) + 
+  geom_bar()+
+  facet_wrap(~complete)
 
 
 

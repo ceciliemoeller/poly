@@ -80,7 +80,7 @@ var instructions_I = {
       "<p class = 'gap-above'> Some of the rhythms are rather complex. Do not try to imitate the rhythms. " +
     "Your task is to simply tap along to the steady underlying beat.</p>",
       // "<p>Your feet emphasize the beat when you walk at a constant pace in time with music.</p>",
-  choices: ["I got it! When do I start tapping?"]
+  choices: ["I got it! Continue"]
   };
 timeline.push(instructions_I);
 
@@ -124,7 +124,7 @@ var test = {
 
 var rating = {
   type: "html-slider-response",
-  stimulus: "<p>In this example, how easy was it for you to find the beat?</p>",
+  stimulus: "<p>In this example, how difficult was it for you to find the beat?</p>",
   // "<p>Your rating will start the next trial.</p>" , 
   labels: ['very easy', 'very difficult'],
   // labels: ["<p>very</p><p>easy</p>", "<p>very</p><p>difficult</p>"],

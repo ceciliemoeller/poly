@@ -320,31 +320,45 @@ youth_country <- dropdown_page(
   }     
 ),
 
+
+
 # MOTHER TONGUE
-language <- dropdown_page(
+language <- text_input_page(
   label = "language",
+  width = "290px",
   prompt = p(strong ("Which language(s) do you consider your mother tongue (the language(s) of the family you grew up in)?"),
-          p("If you are bilingual, please select the option 'Other or bilingual' and state the names of the languages beginning with the one with the strongest influence in your daily life.")),
+             p("If you are bilingual, please write the names of both languages beginning with the one with the strongest influence in your daily life.")),
   save_answer=TRUE,
-  choices = c("Please select",  "Arabic", "Bengali", "Chinese", "Danish", "English", "Hindi", "Japanese", "Portuguese", "Punjabi", "Russian", "Spanish", 
-               "I prefer not to tell you"
-  ),
-  alternative_choice = TRUE,
-  alternative_text = "Other or bilingual (please state which)",
-  next_button_text = "Next",
-  max_width_pixels = 290,
-  validate = function(answer, ...) {
-    if (answer=="Please select")
-      "Please select your mother tongue from the dropdown menu. If your mother tongue is not on the list, or if you are bilingual, select 'Other or bilingual' at the bottom of the list and write the name(s) of the language(s) in the designated field."
-    else if (answer=="") 
-      "If you select 'Other or bilingual' at the bottom of the list, please write the name(s) of the language(s) in the designated field."
-    else TRUE
-  },
-  on_complete = function(answer, state, ...) {
-    set_global(key = "residence", value = answer, state = state)
-  }     
+  button_text = "Next"
 )
 )
+
+
+# # MOTHER TONGUE
+# language <- dropdown_page(
+#   label = "language",
+#   prompt = p(strong ("Which language(s) do you consider your mother tongue (the language(s) of the family you grew up in)?"),
+#           p("If you are bilingual, please select the option 'Other or bilingual' and state the names of the languages beginning with the one with the strongest influence in your daily life.")),
+#   save_answer=TRUE,
+#   choices = c("Please select",  "Arabic", "Bengali", "Chinese", "Danish", "English", "Hindi", "Japanese", "Portuguese", "Punjabi", "Russian", "Spanish", 
+#                "I prefer not to tell you"
+#   ),
+#   alternative_choice = TRUE,
+#   alternative_text = "Other or bilingual (please state which)",
+#   next_button_text = "Next",
+#   max_width_pixels = 290,
+#   validate = function(answer, ...) {
+#     if (answer=="Please select")
+#       "Please select your mother tongue from the dropdown menu. If your mother tongue is not on the list, or if you are bilingual, select 'Other or bilingual' at the bottom of the list and write the name(s) of the language(s) in the designated field."
+#     else if (answer=="") 
+#       "If you select 'Other or bilingual' at the bottom of the list, please write the name(s) of the language(s) in the designated field."
+#     else TRUE
+#   },
+#   on_complete = function(answer, state, ...) {
+#     set_global(key = "residence", value = answer, state = state)
+#   }     
+# )
+# )
 
 # MUSICAL EXPERIENCE
 
@@ -555,7 +569,7 @@ elts <- join(
    elt_save_results_to_disk(complete = FALSE),
    sound_check,
    poly_ratio,
-   elt_save_results_to_disk(complete = FALSE),
+   elt_save_results_to_disk(complete = FALSE), # anything that is saved here counts as completed
    age,
    gender,
    elt_save_results_to_disk(complete = FALSE),
