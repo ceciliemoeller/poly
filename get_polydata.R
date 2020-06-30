@@ -142,31 +142,78 @@ output_r <- output_r[!emptycols]
 # write.csv(output, file = "./ptrtaps.csv")
 
 
+ggplot(output, aes(x = soundcheck, fill=complete)) + 
+  geom_bar()+
+  labs(title = 'EXPERIMENT (incl. our own data')+
+  theme(axis.text.x = element_text(angle = 270))+
+  facet_wrap(~complete)
 
 ##################
-# PLOT
+# PLOT PILOTS ONLY
 ##################
-
 
 ###
-# run shiny app to create plots
+# For plot inspiration, check out:
 
 # gglearn(dataset = output)
 # 
 
+# Remove our own data in order to assess effect of browser/headphones instructions
+output <- output %>%
+  arrange(currentTime)
+pilots_only<-output[24:length(output),]
 
-ggplot(output, aes(x = soundcheck, fill=complete)) + 
-  geom_bar()
+pilots_only<-pilots_only[!is.na(pilots_only$id),]
+
+#plot
+
+ggplot(pilots_only, aes(x = soundcheck, fill=complete)) + 
+  geom_bar()+
+  labs(title = 'EXPERIMENT(incl. our own data')+
+  theme(axis.text.x = element_text(angle = 270))+
+  facet_wrap(~complete)
   
 
-
-ggplot(output, aes(x = browser)) + 
+ggplot(pilots_only, aes(x = browser)) + 
   geom_bar()+
+  labs(title = 'BROWSER')+
 facet_wrap(~complete)
 
-ggplot(output, aes(x = device)) + 
+ggplot(pilots_only, aes(x = device)) + 
   geom_bar()+
+  labs(title = 'DEVICE')+
   facet_wrap(~complete)
+
+ggplot(pilots_only, aes(x = headphones)) + 
+  geom_bar()+
+  labs(title = 'HEADPHONES?')+
+  theme(axis.text.x = element_text(angle = 270))+
+  # scale_y_continuous(breaks=seq(0, 16, 5))+
+  facet_wrap(~complete)
+
+ggplot(pilots_only, aes(x = headphones)) + 
+  geom_bar()+
+  labs(title = 'HEADPHONES by device')+
+  theme(axis.text.x = element_text(angle = 270))+
+  # scale_y_continuous(breaks=seq(0, 16, 5))+
+  facet_wrap(~device)
+
+
+
+# ###############################################################################################
+# ##make easy-access date object
+# 
+# output$time<- as.POSIXlt.POSIXct(output$currentTime)
+# 
+# show_date <- output
+# show_date<-show_date %>% select(id, currentTime, time, device, browser, headphones, comments, soundcheck)
+# 
+# ################################################################################################
+# # # # Recruitment since X (check show_date)
+# # #
+# # scores_recent <- scores[scores$currentTime > 			1583244398,]
+# # scores<-scores_recent
+# ################################################################################################
 
 
 

@@ -16,8 +16,6 @@ function run_jspsych() {
     // "<p class='largegap-above'>Please adjust the volume of your device to a comfortable level where you can clearly hear the sounds.</p>"+
     "<p class='gap-above'>..........</p>"+
     "<p class='font15'>If the experiment fails to load, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.</p>",
- 
-  
     on_finish: function() {
       var json_data = jsPsych.data.get().json();
       Shiny.onInputChange("jspsych_results", json_data);

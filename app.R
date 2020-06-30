@@ -103,9 +103,25 @@ welcome <-
       p(strong("musical beat perception!")),
       p("The test is fun, fast, and very simple. You will hear some musical rhythms, and your task is to simply tap along to the beat of the rhythms, using the designated button."),
       p("Recommendations: take the test in quiet surroundings, use headphones, and do not use the browser 'Safari'."),
-      p("You can expect this to take 10-15 minutes.")
+      p("You can expect this to take 10-15 minutes."),
+      p("Please note: You have to be at least 18 years old to participate."),
       )
-  )),
+  ),
+  button_text = "I am 18 or older. Continue!"
+       
+    ),
+
+
+# sound_check<-one_button_page(
+#   
+#   body = div(h4(strong("Quick sound check")),
+#              
+#              p("When you click the button below, you will hear some random sounds that you can use to adjust the volume of your device to a comfortable level."),
+#              # p("If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.")
+#   ),
+#   button_text = "Play sounds"
+# )
+
 
 # p("If possible, find a fairly quiet room so you can easily concentrate on the task.")
 
@@ -114,12 +130,12 @@ device <-dropdown_page(
   label = "device",
   prompt = div(h4(strong("Device")),
                p("First, we need to know which device you are using to take the test?"),
-               p("If possible, use a device with a touchscreen, alternatively a touchpad or mouse (left click)."),
+               p("If possible, use a device with a touchscreen, alternatively a clickpad or mouse, rather than a laptop touchpad."),
                p(strong ("You can not use a keyboard.")),
                p("Please make sure you stick with your chosen input method throughout the test."),
                ),
   save_answer=TRUE,
-  choices = c("Select current device", "Smartphone (touchscreen)","Tablet (touchscreen)","Laptop (touchpad)", "Laptop (external mouse)", "Desktop (external mouse)"),
+  choices = c("Select current device", "Smartphone (touchscreen)","Tablet (touchscreen)","Laptop (click button/clickpad)", "Laptop (external mouse)", "Desktop (external mouse)"),
   alternative_choice = TRUE,
   alternative_text = "Other - please state which?",
   next_button_text = "Next",
@@ -169,7 +185,7 @@ headphones<-dropdown_page(
                p("How do you play the sounds?"),
   ),
   save_answer=TRUE,
-  choices = c("I will play sounds through...", "around-ear headphones", "on-ear headphones","in-ear headphones", "my device's internal speakers", "external speakers"),
+  choices = c("I will play sounds through...", "over-ear headphones", "on-ear headphones","in-ear headphones", "my device's internal speakers", "external speakers"),
   alternative_choice = TRUE,
   alternative_text = "Other - please state which?",
   next_button_text = "Next",
@@ -190,12 +206,12 @@ headphones<-dropdown_page(
 sound_check<-one_button_page(
   
   body = div(h4(strong("Quick sound check")),
-               
-               p("When you click the button below, you will hear some random sounds that you can use to adjust the volume of your device to a comfortable level."),
-               # p("If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.")
-             ),
+             
+             p("When you click the button below, you will hear some random sounds that you can use to adjust the volume of your device to a comfortable level."),
+             # p("If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.")
+  ),
   button_text = "Play sounds"
-  )
+)
 
 
 
@@ -210,9 +226,7 @@ age <-dropdown_page(
                p(strong ("What is your age?")),
                ),
   save_answer=TRUE,
-  choices = c("Please select","18-19 years","20-21","22-23","24-25","26-27","28-29","30-31","32-33","34-35","36-37","38-39","40-41","42-43","44-45","46-47","48-49","50-51","52-53","54-55","56-57","58-59","60-61","62-63","64-65","66-67","68-69","70-71","72-73","74-75","76-77","78-79","80 years or above", "I prefer not to tell you"),
-  # alternative_choice = TRUE,
-  # alternative_text = "I prefer not to tell you",
+  choices = c("Please select","18-19 years","20-21","22-23","24-25","26-27","28-29","30-31","32-33","34-35","36-37","38-39","40-41","42-43","44-45","46-47","48-49","50-51","52-53","54-55","56-57","58-59","60-61","62-63","64-65","66-67","68-69","70-71","72-73","74-75","76-77","78-79","80 years or above"),
   next_button_text = "Next",
   max_width_pixels = 250,
   validate = function(answer, ...) {
@@ -564,7 +578,6 @@ thanks<-final_page(div(
 
 
 elts <- join(
-
    intro,
    elt_save_results_to_disk(complete = FALSE),
    sound_check,

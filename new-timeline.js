@@ -19,7 +19,7 @@ var calibrate = {
   // "<h4><strong>Quick sound check</strong></h4>" +
   "<p class='gap-above'>Please adjust the volume of your device to a comfortable level where you can clearly hear the sounds. Then click 'Continue!' above.</p>"+
   "<p class='gap-above'>..........</p>"+
-  "<p class='font15'>If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge..</p>",
+  "<p class='font15'>If the experiment fails to load, or you cannot hear the sounds despite having turned up the volume, close the window and open it in a different browser, e.g., Chrome, Firefox or Edge.</p>",
   choices: ["<p class='font15'><strong>Play sound again</strong></p>", "<p class='font15'><strong>Volume is comfortable now.</strong></p>"+
   "<p class='font20'><strong> Continue!</strong></p>"],
   margin_vertical: '2px'
@@ -45,7 +45,7 @@ timeline.push(loop_calibrate);
 var smt_instr = {
   type: "html-button-response",
   stimulus: "<h4><strong>Your spontaneous tempo</strong></h4>" +
-  "<p>To warm up, we would like to start by asking you to tap at a steady rate that feels comfortable for you. Please tap with the index finger (on screen or mouse) of your dominant hand.</p>" +
+  "<p>To warm up, we would like to start by asking you to tap (press/click) at a steady rate that feels comfortable for you. Please tap with the index finger (on screen or mouse) of your dominant hand.</p>" +
      "<p>Please start tapping when you hear the whistle, and continue to do so until you hear the whistle again.</p>",
 
   choices: ["Click here to Start"]
@@ -96,44 +96,40 @@ timeline.push(instructions_I);
 //   };
 // timeline.push(instructions_II);
 
-var instructions_III = {
+var instructions_II = {
   type: "html-button-response",
   stimulus: 
   // "<p> Some of the rhythms are rather complex. Do not try to imitate the rhythms. " +
   //   "Your task is to simply tap along to the steady underlying beat.</p>" +
-    "<p>When the sound starts, just listen to the musical rhythm, take your time, " +
+    "<p>Note, that you should not tap from the very beginning. " +  
+    "When the sound starts, just listen to the musical rhythm, take your time, " +
     "and start tapping whenever you feel the beat.</p>" +
     "<p>Please continue tapping until the sound stops.</p>" +
+    "<p>..........</p>"+
+    "<p>You will be asked to tap to approximately 20 different rhythms.</p>" +
     "<p>Are you ready? Good luck!</p>",
   choices: ["Start the experiment"],
-  post_trial_gap: 2000
+  post_trial_gap: 1000
 };
-timeline.push(instructions_III);
+timeline.push(instructions_II);
 
 
 var test = {
   type: "audio-bpm-button-response",
   stimulus: jsPsych.timelineVariable('stimulus'),
-  prompt: "<p>Use your touch screen, touch pad or mouse (left click)</p>",
+  prompt: "<p class='font15'>Use your touch screen, clickpad/button or mouse</p>",
     
-  choices: ["<p class='font'> <strong>Tap here!</strong></p>"],
-  post_trial_gap: 000
-  //   response_ends_trial: false
-}
+  choices: ["<p class='font15'> <strong>When you feel the beat...</strong></p>"+
+  "<p class='font'> <strong>Tap here!</strong></p>"]
+ }
 
 
 var rating = {
   type: "html-slider-response",
-  stimulus: "<p>In this example, how difficult was it for you to find the beat?</p>",
-  // "<p>Your rating will start the next trial.</p>" , 
+  stimulus: "<p>In this example, how difficult was it for you to find the beat?</p>", 
   labels: ['very easy', 'very difficult'],
-  // labels: ["<p>very</p><p>easy</p>", "<p>very</p><p>difficult</p>"],
-  // min: 1,
-  // max: 9,
-  // start: 5,
   require_movement: true,
   slider_width: 210
-  // choices: ["1 - extremely easy", "2","3","4","5","6","7","8","9 - extremely difficult"]
 };
 
 
@@ -145,6 +141,4 @@ var test_procedure = {
   repetitions: 1
 }
 
-
 timeline.push(test_procedure);
-

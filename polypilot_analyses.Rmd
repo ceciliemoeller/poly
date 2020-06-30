@@ -1,0 +1,36 @@
+---
+title: "polypilot_anayses"
+author: "CM"
+date: "30/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+myData_TEMPO <- read.csv("~/poly_online/results/myData_TEMPO.csv")
+
+# Subset Chosen meter only
+cm<-myData_TEMPO[422:439]
+
+barplot(table(cm[ChosenMeter_T.2.3.40.60:ChosenMeter_T.2.3.3037.4556],),main="Chosen Meter",names.arg=c("1","2","3","4","5","5","7","8"),ylim=c(0,dim(cm)[1]))
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
