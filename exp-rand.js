@@ -40,7 +40,13 @@ stimuliExpRandomizer.randomizeStimuli = function(type) {
                 "sounds/pitch/p09_3-C3-13_4-C5-01.mp3",               
                 "sounds/pitch/p10_3-C5-07_4-C3-07.mp3",              
                 "sounds/pitch/p11_3-C5-10_4-C3-04.mp3",            
-                "sounds/pitch/p12_3-C5-13_4-C3-01.mp3"            
+                "sounds/pitch/p12_3-C5-13_4-C3-01.mp3",
+                "sounds/pitch/p13_2-C4-07_3-C4-07.mp3",
+                "sounds/pitch/p14_2-C4-04_3-C4-10.mp3",
+                "sounds/pitch/p15_2-C4-01_3-C4-13.mp3",
+                "sounds/pitch/p16_3-C4-07_4-C4-07.mp3",              
+                "sounds/pitch/p17_3-C4-10_4-C4-04.mp3",            
+                "sounds/pitch/p18_3-C4-13_4-C4-01.mp3"         
             ],
             [
                 "sounds/tempo/t01_2_3_040_060.mp3",
