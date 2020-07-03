@@ -601,7 +601,7 @@ elts <- join(
 
  make_test(
      elts = elts,
-     opt = test_options(title="Poly pilot, June 19th, 2020",
+     opt = test_options(title="Polyrhythms, Aarhus 2020",
                         admin_password="", # write a secret password here
                         enable_admin_panel=TRUE,
                         researcher_email="cecilie@clin.au.dk",

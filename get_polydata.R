@@ -144,7 +144,7 @@ output_r <- output_r[!emptycols]
 
 ggplot(output, aes(x = soundcheck, fill=complete)) + 
   geom_bar()+
-  labs(title = 'EXPERIMENT (incl. our own data')+
+  labs(title = 'EXPERIMENT')+
   theme(axis.text.x = element_text(angle = 270))+
   facet_wrap(~complete)
 

@@ -1,16 +1,28 @@
-var stimuliExpRandomizer = {},
-    stimuliExpRandomizerRandomNb = Math.floor(Math.random() * 10);
+// var stimuliExpRandomizer = {},
+//     stimuliExpRandomizerRandomNb = Math.floor(Math.random() * 10);
 
-if (stimuliExpRandomizerRandomNb < 3){
+// if (stimuliExpRandomizerRandomNb < 3){
+//     stimuliExpRandomizerRandomNb = 0;
+// }
+// else if (stimuliExpRandomizerRandomNb < 6){
+//     stimuliExpRandomizerRandomNb = 1;
+// }
+// else {
+//     stimuliExpRandomizerRandomNb = 2;
+// }
+
+var stimuliExpRandomizer = {},
+    stimuliExpRandomizerRandomNb = Math.floor(Math.random() * 100);
+
+if (stimuliExpRandomizerRandomNb < 27){
     stimuliExpRandomizerRandomNb = 0;
 }
-else if (stimuliExpRandomizerRandomNb < 6){
+else if (stimuliExpRandomizerRandomNb < 60){
     stimuliExpRandomizerRandomNb = 1;
 }
 else {
     stimuliExpRandomizerRandomNb = 2;
 }
-
 
 /**
  * This function takes a type parameter, deciding
